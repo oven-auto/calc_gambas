@@ -2,6 +2,10 @@
 
 { Form Form
   MoveScaled(0,0,42,31)
+  Text = ("МИК")
+  Resizable = False
+  SkipTaskbar = True
+  Transparent = True
   { Button1 Button numbers
     Name = "Button1"
     MoveScaled(1,19,5,5)
