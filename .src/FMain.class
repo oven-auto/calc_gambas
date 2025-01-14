@@ -1,0 +1,70 @@
+' Gambas class file
+
+Public displaStatus As Boolean = 0
+Public operands As Array = ["+", "-", "x", "/"]
+
+Public Sub Form_Open()
+
+  Dim ctr As Control
+  Dim btn As Button
+  
+  For Each ctr In Me.Children
+    If ctr.Tag = "number" Then 
+      btn = ctr
+      btn.Text = Mid(btn.Name, 7, btn.Name.Len)
+    Endif
+  Next
+  
+  Display.Text = 0
+End
+
+
+
+Public Sub numbers_click()
+  Dim currentCtr As Control = Application.ActiveControl
+  Dim btn As Button = currentCtr
+  Dim lastSymbol As String = Right(Display.Text, 1)
+  Dim currentVal As String = btn.Text
+  
+  If displaStatus = 0 Then 
+    Display.Text = ""
+    displaStatus = 1
+  Endif
+
+  If Arr.inArray(btn.Text, operands) And Arr.inArray(lastSymbol, operands) Then 
+    currentVal = ""
+  Endif
+  
+  Display.Text &= currentVal 
+End
+
+
+
+Public Sub Result_Click()
+
+  Dim str As String = Display.Text
+  Dim strLength As Integer = str.Len
+  Dim inFixStack As Stack = New Stack
+  Dim itemNum As Variant = ""
+  Dim inFixArr As Array
+  
+  For i As Integer = 0 To strLength - 1 Step 1
+    If Arr.inArray(str[i], operands) Then 
+      If itemNum.Len <> 0 Then 
+        inFixStack.Push(itemNum)
+      Endif
+      inFixStack.Push(str[i])
+      itemNum = ""
+    Else
+      itemNum &= str[i]
+    Endif
+  Next 
+  
+  inFixStack.Push(itemNum)
+  
+  inFixArr = Arr.revert(Arr.stackToArray(inFixStack))
+  
+  For i As Integer = 0 To inFixArr.Length - 1 Step 1
+    Print inFixArr[i]
+  Next
+End

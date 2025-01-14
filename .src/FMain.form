@@ -1,0 +1,86 @@
+# Gambas Form File 3.0
+
+{ Form Form
+  MoveScaled(0,0,42,31)
+  { Button1 Button numbers
+    Name = "Button1"
+    MoveScaled(1,19,5,5)
+    Tag = "number"
+  }
+  { Button2 Button numbers
+    Name = "Button2"
+    MoveScaled(7,19,5,5)
+    Tag = "number"
+  }
+  { Button3 Button numbers
+    Name = "Button3"
+    MoveScaled(13,19,5,5)
+    Tag = "number"
+  }
+  { Button4 Button numbers
+    Name = "Button4"
+    MoveScaled(1,13,5,5)
+    Tag = "number"
+  }
+  { Button5 Button numbers
+    Name = "Button5"
+    MoveScaled(7,13,5,5)
+    Tag = "number"
+  }
+  { Button6 Button numbers
+    Name = "Button6"
+    MoveScaled(13,13,5,5)
+    Tag = "number"
+  }
+  { Button7 Button numbers
+    Name = "Button7"
+    MoveScaled(1,7,5,5)
+    Tag = "number"
+  }
+  { Button8 Button numbers
+    Name = "Button8"
+    MoveScaled(7,7,5,5)
+    Tag = "number"
+  }
+  { Button9 Button numbers
+    Name = "Button9"
+    MoveScaled(13,7,5,5)
+    Tag = "number"
+  }
+  { Button0 Button numbers
+    Name = "Button0"
+    MoveScaled(7,25,5,5)
+    Tag = "number"
+  }
+  { Display LCDLabel
+    MoveScaled(1,1,40,6)
+  }
+  { Button10 Button numbers
+    Name = "Button10"
+    MoveScaled(19,7,5,5)
+    Tag = "action"
+    Text = ("/")
+  }
+  { Button11 Button numbers
+    Name = "Button11"
+    MoveScaled(19,13,5,5)
+    Tag = "action"
+    Text = ("x")
+  }
+  { Button12 Button numbers
+    Name = "Button12"
+    MoveScaled(19,19,5,5)
+    Tag = "action"
+    Text = ("-")
+  }
+  { Button13 Button numbers
+    Name = "Button13"
+    MoveScaled(19,25,5,5)
+    Tag = "action"
+    Text = ("+")
+  }
+  { Result Button
+    MoveScaled(25,25,16,5)
+    Text = ("=")
+  }
+}

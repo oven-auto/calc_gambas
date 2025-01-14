@@ -1,0 +1,58 @@
+' Gambas module file
+
+Public Function inArray(value As String, arr As Array) As Boolean
+  For i As Integer = 0 To (arr.Length - 1) Step 1
+    If value = arr[i] Then 
+      Return 1
+    Endif
+  Next 
+  Return 0 
+End
+
+
+Public Function stackToArray(itemStack As Stack) As Array
+  Dim StackLen As Integer = itemStack.Size
+  Dim arrRes As New String[StackLen]
+  
+  For i As Integer = 0 To StackLen - 1 Step 1
+    arrRes.Add(itemStack.Pop())
+  Next
+  
+  Return arrRes
+End
+
+
+
+Public Function revert(itemArray As Array) As Array
+  Dim StackLen As Integer = itemArray.Length
+  Dim arrRes As New String[StackLen]
+  
+  For i As Integer = StackLen - 1 To 0 Step -1
+    arrRes.Add(itemArray[i])
+  Next
+  
+  Return arrRes
+End
+
+
+
+Public Function toPostFix(itemArray As Array) As Array
+  
+  For i As Integer = 0 To itemArray.Length - 1 Step 1
+    If inArray(itemArray[i], FMain.operands) Then
+      
+    Endif
+  Next
+  
+End
+
+
+
+
+
+
+
+
+
+
+
