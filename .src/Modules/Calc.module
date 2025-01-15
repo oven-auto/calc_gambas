@@ -1,0 +1,130 @@
+' Gambas module file
+
+Public Function getPriority(str As String) As Integer
+  Dim currentPriority As Integer = 0
+  
+  If str = "+" Or str = "-" Then 
+    currentPriority = 0
+  Else If str = "x" Or str = "/" Then 
+    currentPriority = 1
+  Endif 
+  
+  Return currentPriority
+End
+
+
+Public Function toPostFix(itemArray As Array) As Array
+  Dim stackA As Stack = New Stack
+  Dim stackOp As Stack = New Stack
+  Dim s_1 As Array
+  Dim priority As Integer = 0
+  Dim currentPriority As Integer = 0
+  Dim tmpArr As Array
+  Dim stackRes As Stack = New Stack
+  Dim arrRes As Array
+  
+  For i As Integer = 0 To itemArray.Length - 1 Step 1
+    If Arr.inArray(itemArray[i], FMain.operands) Then 'если текущий элмент это оператор
+      
+      currentPriority = getPriority(itemArray[i]) 'получаем приоритет текущего оператора
+      
+      If stackOp.Size = 0 Then 'если это первый оператор
+        stackOp.Push(itemArray[i]) 'запихиваем его в стек операторов
+        priority = currentPriority 'ставим приоритет равный текщему
+        Continue  
+      Endif
+      
+    If currentPriority < priority Then
+      Arr.appendArrayToStack(stackA, Arr.stackToArray(stackOp))
+      stackOp.Clear()
+    Endif
+      stackOp.Push(itemArray[i])        
+      priority = currentPriority  
+    Else 
+      stackA.Push(itemArray[i])
+    Endif
+    
+    If i = itemArray.Length - 1 Then 
+      Arr.appendArrayToStack(stackA, Arr.stackToArray(stackOp))
+    Endif 
+  Next
+  
+  s_1 = Arr.stackToArray(stackA)
+  
+  For Each item As String In s_1
+    If item <> "" Then 
+      stackRes.Push(item)
+    Endif
+  Next
+  
+  arrRes = Arr.stackToArray(stackRes)
+  
+  Return Arr.revert(arrRes)
+End
+
+
+
+Public Function calculate(arrPam As Array) As String
+  Dim str As String
+  Dim ValStack As Stack = New Stack
+  Dim x As Float
+  Dim y As Float
+  Dim res As Float = 0
+  
+  For Each item As String In arrPam
+    If item <> "" Then 
+      If Arr.inArray(item, FMain.operands) = 0 Then 
+        ValStack.Push(item)
+      Else 
+        y = ValStack.Pop()
+        x = ValStack.Pop()
+        Select item
+          Case "+"
+            res = plus(x, y)
+          Case "-"
+            res = minus(x, y)
+          Case "x"
+            res = multiple(x, y)
+          Case "/"
+            res = division(x, y)
+        End Select
+        
+        ValStack.Push(res)
+      Endif
+    Endif
+  Next
+  
+  Return res
+  
+End
+
+
+Public Function plus(x As Float, y As Float) As Float
+  
+  Return x + y
+  
+End
+
+
+Public Function minus(x As Float, y As Float) As Float
+  
+  Return x - y
+  
+End
+
+
+
+Public Function multiple(x As Float, y As Float) As Float
+  
+  Return x * y
+  
+End
+
+
+Public Function division(x As Float, y As Float) As Float
+  
+  Return x / y
+  
+End
+
+

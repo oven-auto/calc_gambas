@@ -5,7 +5,6 @@
   Text = ("МИК")
   Resizable = False
   SkipTaskbar = True
-  Transparent = True
   { Button1 Button numbers
     Name = "Button1"
     MoveScaled(1,19,5,5)
@@ -86,5 +85,9 @@
   { Result Button
     MoveScaled(25,25,16,5)
     Text = ("=")
+  }
+  { Clear Button
+    MoveScaled(36,7,5,5)
+    Text = ("C")
   }
 }

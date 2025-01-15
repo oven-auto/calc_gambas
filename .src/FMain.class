@@ -42,12 +42,21 @@ End
 
 Public Sub Result_Click()
 
-  Dim str As String = Display.Text
-  Dim strLength As Integer = str.Len
+  Dim str As String
+  Dim strLength As Integer
   Dim inFixStack As Stack = New Stack
   Dim itemNum As Variant = ""
   Dim inFixArr As Array
+  Dim postFix As Array
   
+  If Display.Text[0] = "-" Then 
+    str = "0" & Display.Text
+  Else
+    str = Display.Text 
+  Endif
+  
+  strLength = str.Len
+ 
   For i As Integer = 0 To strLength - 1 Step 1
     If Arr.inArray(str[i], operands) Then 
       If itemNum.Len <> 0 Then 
@@ -64,7 +73,13 @@ Public Sub Result_Click()
   
   inFixArr = Arr.revert(Arr.stackToArray(inFixStack))
   
-  For i As Integer = 0 To inFixArr.Length - 1 Step 1
-    Print inFixArr[i]
-  Next
+  postFix = Arr.revert(Calc.toPostFix(inFixArr))
+  Print Arr.toString(postFix)
+  Display.Text = Calc.calculate(postFix)
+End
+
+Public Sub Clear_Click()
+
+  Display.text = ""
+  displaStatus = 0
 End

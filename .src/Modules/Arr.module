@@ -36,15 +36,26 @@ End
 
 
 
-Public Function toPostFix(itemArray As Array) As Array
+Public Sub appendArrayToStack(st As Stack, arr As Array) 
   
-  For i As Integer = 0 To itemArray.Length - 1 Step 1
-    If inArray(itemArray[i], FMain.operands) Then
-      
-    Endif
+  For z As Integer = 0 To arr.Length - 1 Step 1
+    st.Push(arr[z])
   Next
   
 End
+
+
+Public Function toString(arr As Array) As String
+  Dim str As String = ""
+  
+  For Each item As String In arr
+    str &= item
+  Next
+  
+  Return str
+End
+
+
 
 
 
